@@ -66,10 +66,6 @@ export default class AddNote extends Component {
           className='AddFolderForm'
           type='submit'        
         >Add Note</button>
-        
-
-
-
       </form>
     )
   }

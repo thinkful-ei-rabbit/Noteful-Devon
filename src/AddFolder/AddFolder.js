@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ApiContext from '../ApiContext'
 import config from '../config'
+import './AddFolder.css'
 
 
 export default class AddFolder extends Component {
@@ -13,7 +14,7 @@ export default class AddFolder extends Component {
 
   handleAddFolder = e => {
     e.preventDefault()
-
+    console.log(e)
     const folder = {
       name: e.target.addFolder.value
     }
@@ -46,11 +47,25 @@ export default class AddFolder extends Component {
   render() {
     return (
       <form className="form" onSubmit={this.handleAddFolder}>
-        <label>Create New Folder:</label>
+        <ul className='wrapper'>
+          <li className='from-row'>
+            <label>Create New Folder:</label>
+          </li>
+          <li className='from-row'>
+            <input name='addFolder'/>
+          </li>
+          <li className='from-row'>
+          <button className="form-button"
+            type='submit'
+            value='submit'>Add folder</button>
+          </li>
+
+          {/* <label>Create New Folder:</label>
         <input name='addFolder'/><br /> 
         <button className="form-button"
         type='submit'
-        value='submit'>Add folder</button>
+        value='submit'>Add folder</button> */}
+        </ul>
       </form>
     )
   }
