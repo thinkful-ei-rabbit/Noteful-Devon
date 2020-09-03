@@ -13,20 +13,20 @@ export default class AddNote extends Component {
 
   handleAddNote = e => {
     e.preventDefault()
-    console.log(e.target.addNote.value)
+    console.log(e.target.folders.value)
 
     const note= {
-      name: e.target.val
-      modified: "something"
-      folderId: 'not sure how we get this?'
-      content: e.target.val
+      name: e.target.name.value,
+      //modified: "something",
+      folderId: e.target.folders.value,
+      content: e.target.content.value
     }
     
     const options = {
       method: 'POST',
-      body: JSON.stringify(folder),
+      body: JSON.stringify(note),
       headers: {
-        'context-type': 'application/json'
+        'content-type': 'application/json'
       },
     }
     fetch(`${config.API_ENDPOINT}/notes`, options)
@@ -36,39 +36,35 @@ export default class AddNote extends Component {
       }
       return res.json();
     })
-    .then (folder => {
-      this.setState ({
-        id: '',
-        name: '',
-
-      })
-      //this.props.handleAdd(folder);
+    .then (note => {
+      this.context.addNote(note) 
+      this.props.history.push('/')
     })
     .catch(err => {
-      this.setState ({
-        error: err.message
-      })
+      console.log(err.message)
     })
-      
-    }
-  
- 
+  }
 
-  
   render() {
+    const optionsArr = this.context.folders.map(folder => 
+      <option value={`${folder.id}`} name={`${folder.name}`}>{folder.name}</option>
+    )
+
     return (
       //select folder to add note to
-      <form className="form">
-        <select>
-          
+      <form className="form" onSubmit={this.handleAddNote}>
+        <label for='folders'>Folders</label>
+        <select id='folders' name='folders'>
+          {optionsArr}
         </select>
-        <label>Create New Note:</label> 
-        <input name=''/><br />
-        <input name='' /><br />
+        <label>Create New Note:</label><br />
+        <label for='name'>Name</label>
+        <input id='name' name='name'/><br />
+        <label for='content'>Content</label>
+        <textarea id='content' name='content'/><br />
         <button
           className='AddFolderForm'
-          type='submit'
-          onClick={this.handleAddNote}
+          type='submit'        
         >Add Note</button>
         
 
