@@ -79,19 +79,6 @@ export default class AddNote extends Component {
             </button>
           </li>
         </ul>
-        {/* <label htmlFor='folders'>Folders</label>
-        <select id='folders' name='folders'>
-          {optionsArr}
-        </select>
-        <label>Create New Note:</label><br />
-        <label htmlFor='name'>Name</label>
-        <input id='name' name='name'/><br />
-        <label htmlFor='content'>Content</label>
-        <textarea id='content' name='content'/><br />
-        <button
-          className='AddFolderForm'
-          type='submit'        
-        >Add Note</button> */}
       </form>
     )
   }
