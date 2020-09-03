@@ -8,8 +8,6 @@ export default class AddFolder extends Component {
   static defaultProps ={
     addFolder: () => {},
   }
-
-
   static contextType = ApiContext;
 
   handleAddFolder = e => {
@@ -64,3 +62,7 @@ export default class AddFolder extends Component {
     )
   }
 };
+
+AddFolder.propTypes = {
+  
+}
