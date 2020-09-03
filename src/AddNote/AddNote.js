@@ -51,9 +51,35 @@ export default class AddNote extends Component {
     )
 
     return (
-      //select folder to add note to
+      
       <form className="form" onSubmit={this.handleAddNote}>
-        <label htmlFor='folders'>Folders</label>
+        <ul className='wrapper'>
+          <li className='from-row'>
+            <label>Create New Note:</label>
+          </li>
+          <li className='from-row'>
+            <label htmlFor='folders'>Folders</label>
+            <select id='folders' name='folders'>
+              {optionsArr}
+            </select>
+          </li>
+          <li className='from-row'>
+            <label htmlFor='name'>Name</label>
+            <input id='name' name='name'/>
+          </li>
+          <li className='from-row'>
+            <label htmlFor='content'>Content</label>
+            <textarea id='content' name='content'/>
+          </li>
+          <li className='from-row'>
+            <button
+              className='AddFolderForm'
+              type='submit'        
+              >Add Note
+            </button>
+          </li>
+        </ul>
+        {/* <label htmlFor='folders'>Folders</label>
         <select id='folders' name='folders'>
           {optionsArr}
         </select>
@@ -65,7 +91,7 @@ export default class AddNote extends Component {
         <button
           className='AddFolderForm'
           type='submit'        
-        >Add Note</button>
+        >Add Note</button> */}
       </form>
     )
   }
