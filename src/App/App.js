@@ -15,7 +15,6 @@ class App extends Component {
     state = {
         notes: [],
         folders: [],
-        addFolder: false,
     };
 
     componentDidMount() {
@@ -44,12 +43,6 @@ class App extends Component {
             notes: this.state.notes.filter(note => note.id !== noteId)
         });
     };
-
-    handleAddFolder = () => {
-        this.setState({
-            addFolder: !this.state.addFolder
-        })
-    }
 
     renderNavRoutes() {
         return (
@@ -83,7 +76,6 @@ class App extends Component {
                 <Route path="/note/:noteId" component={NotePageMain} />
                 <Route path="/add-folder" component={AddFolder} />
                 <Route path="/add-note" component={AddNote} />
-
             </>
         );
     }
