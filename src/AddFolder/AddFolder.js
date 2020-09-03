@@ -59,12 +59,6 @@ export default class AddFolder extends Component {
             type='submit'
             value='submit'>Add folder</button>
           </li>
-
-          {/* <label>Create New Folder:</label>
-        <input name='addFolder'/><br /> 
-        <button className="form-button"
-        type='submit'
-        value='submit'>Add folder</button> */}
         </ul>
       </form>
     )

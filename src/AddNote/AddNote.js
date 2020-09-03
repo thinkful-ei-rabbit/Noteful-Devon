@@ -3,6 +3,7 @@ import ApiContext from '../ApiContext'
 import config from '../config'
 
 
+
 export default class AddNote extends Component {
   static defaultProps ={
     addNote: () => {},
@@ -13,11 +14,10 @@ export default class AddNote extends Component {
 
   handleAddNote = e => {
     e.preventDefault()
-    console.log(e.target.folders.value)
 
     const note= {
       name: e.target.name.value,
-      //modified: "something",
+      modified: new Date().toISOString(),
       folderId: e.target.folders.value,
       content: e.target.content.value
     }
@@ -47,20 +47,20 @@ export default class AddNote extends Component {
 
   render() {
     const optionsArr = this.context.folders.map(folder => 
-      <option value={`${folder.id}`} name={`${folder.name}`}>{folder.name}</option>
+      <option key={folder.id} value={folder.id} name={folder.name}>{folder.name}</option>
     )
 
     return (
       //select folder to add note to
       <form className="form" onSubmit={this.handleAddNote}>
-        <label for='folders'>Folders</label>
+        <label htmlFor='folders'>Folders</label>
         <select id='folders' name='folders'>
           {optionsArr}
         </select>
         <label>Create New Note:</label><br />
-        <label for='name'>Name</label>
+        <label htmlFor='name'>Name</label>
         <input id='name' name='name'/><br />
-        <label for='content'>Content</label>
+        <label htmlFor='content'>Content</label>
         <textarea id='content' name='content'/><br />
         <button
           className='AddFolderForm'
