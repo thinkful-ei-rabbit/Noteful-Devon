@@ -13,7 +13,6 @@ export default class AddFolder extends Component {
 
   handleAddFolder = e => {
     e.preventDefault()
-    console.log(e.target.addFolder.value)
 
     const folder = {
       name: e.target.addFolder.value
