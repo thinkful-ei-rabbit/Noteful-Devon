@@ -44,6 +44,18 @@ class App extends Component {
         });
     };
 
+    handleAddFolder = (folder) => {
+        this.setState({
+            folders: [...this.state.folders, folder]
+        })
+    }
+
+    handleAddNote = (folder) => {
+        this.setState({
+            folders: [...this.state.folders, folder]
+        })
+    }
+
     renderNavRoutes() {
         return (
             <>
