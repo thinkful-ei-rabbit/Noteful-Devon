@@ -7,8 +7,9 @@ import NoteListMain from '../NoteListMain/NoteListMain';
 import NotePageMain from '../NotePageMain/NotePageMain';
 import ApiContext from '../ApiContext';
 import config from '../config';
-import AddFolder from '../AddFolder/AddFolder'
 import './App.css';
+import AddNote from '../AddNote/AddNote';
+import AddFolder from '../AddFolder/AddFolder';
 
 class App extends Component {
     state = {
@@ -80,6 +81,8 @@ class App extends Component {
                     />
                 ))}
                 <Route path="/note/:noteId" component={NotePageMain} />
+                <Route path="/add-folder" component={AddFolder} />
+                <Route path="/add-note" component={AddNote} />
 
             </>
         );
