@@ -7,12 +7,14 @@ import NoteListMain from '../NoteListMain/NoteListMain';
 import NotePageMain from '../NotePageMain/NotePageMain';
 import ApiContext from '../ApiContext';
 import config from '../config';
+import AddFolder from '../AddFolder/AddFolder'
 import './App.css';
 
 class App extends Component {
     state = {
         notes: [],
-        folders: []
+        folders: [],
+        addFolder: false,
     };
 
     componentDidMount() {
@@ -41,6 +43,12 @@ class App extends Component {
             notes: this.state.notes.filter(note => note.id !== noteId)
         });
     };
+
+    handleAddFolder = () => {
+        this.setState({
+            addFolder: !this.state.addFolder
+        })
+    }
 
     renderNavRoutes() {
         return (
@@ -72,6 +80,7 @@ class App extends Component {
                     />
                 ))}
                 <Route path="/note/:noteId" component={NotePageMain} />
+
             </>
         );
     }
@@ -80,7 +89,8 @@ class App extends Component {
         const value = {
             notes: this.state.notes,
             folders: this.state.folders,
-            deleteNote: this.handleDeleteNote
+            deleteNote: this.handleDeleteNote,
+            addFolder: this.handleAddFolder
         };
         return (
             <ApiContext.Provider value={value}>
