@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Note from '../Note/Note'
 import CircleButton from '../CircleButton/CircleButton'
 import ApiContext from '../ApiContext'
+import PropTypes from 'prop-types'
 import { getNotesForFolder } from '../notes-helpers'
 import './NoteListMain.css'
 
@@ -48,3 +49,8 @@ export default class NoteListMain extends React.Component {
     )
   }
 }
+ NoteListMain.PropTypes = {
+  name: PropTypes.string,
+  id: PropTypes.number,
+  modified: PropTypes.string
+ }

@@ -13,6 +13,4 @@ export default function NotefulForm(props) {
   )
 }
 
-// NotefulForm.propTypes = {
-//   className: PropTypes.string 
-// }
+// this component does not seem to be used within this app so I am not implementing Proptype
