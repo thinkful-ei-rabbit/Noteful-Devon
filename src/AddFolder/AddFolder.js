@@ -1,14 +1,32 @@
 import React, { Component } from 'react'
 import ApiContext from '../ApiContext'
 import config from '../config'
+import { Link } from 'react-router-dom'
+import ValidationError from '../ValidationError'
+import CircleButton from '../CircleButton/CircleButton'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './AddFolder.css'
 
 
 export default class AddFolder extends Component {
-  static defaultProps ={
-    addFolder: () => {},
-  }
   static contextType = ApiContext;
+
+  constructor(props) {
+    super(props)
+    this.state = {
+        newFolder: {
+            value: '',
+            touched: false,
+        }
+    }
+}
+
+  updateNewFolder(newFolder) {
+    this.setState({ newFolder: {
+      value: newFolder, 
+      touched: true
+    }})
+  }
 
   handleAddFolder = e => {
     e.preventDefault()
@@ -39,23 +57,45 @@ export default class AddFolder extends Component {
     .catch(err => {
       console.log (err.message)
     })
-      
+  
     }
+
+    validateFolderName() {
+      const newFolder = this.state.newFolder.value.trim();
+      if (newFolder.length === 0) {
+        return "Name is required"
+      } else if (newFolder.length <3) {
+        return "Name must be at least 3 letters long"
+      }else {
+        return ''
+      }
+    }
+
   
   render() {
+    const newFolderError = this.validateFolderName();
+
     return (
       <form className="form" onSubmit={this.handleAddFolder}>
         <ul className='wrapper'>
-          <li className='from-row'>
+          <li className='form-row'>
             <label>Create New Folder:</label>
           </li>
-          <li className='from-row'>
-            <input name='addFolder'/>
+          <li className='form-row'>
+            <input type='text' name='addFolder' required 
+            onChange={e => this.updateNewFolder(e.target.value)}/>
+            {this.state.newFolder.touched && <ValidationError message={newFolderError}/>}
           </li>
-          <li className='from-row'>
-          <button className="form-button"
+          <li className='form-row'>
+          {/* might have to change the button back to a regular button */}
+          <CircleButton className="form-button"
+            tag={Link}
+            to='/'
             type='submit'
-            value='submit'>Add folder</button>
+            value='submit'
+            disabled={this.validateFolderName()}>
+              <FontAwesomeIcon icon='plus' />
+               Folder</CircleButton>
           </li>
         </ul>
       </form>
@@ -63,6 +103,3 @@ export default class AddFolder extends Component {
   }
 };
 
-AddFolder.propTypes = {
-  
-}

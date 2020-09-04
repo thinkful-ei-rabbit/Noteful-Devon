@@ -39,7 +39,7 @@ export default class NoteListNav extends React.Component {
             <br />
             Folder
           </CircleButton>
-          {/* if state===true the call form componenet */}
+        
         </div>
       </div>
     )
