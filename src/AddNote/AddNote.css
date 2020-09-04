@@ -1,13 +1,17 @@
+input, select, textarea {
+  width: 100%;
+}
+
 .wrapper {
   background-color: whitesmoke;
   list-style-type: none;
   padding: 10px;
   border-radius: 3px;
-  width: 50%;
+  width: 60%;
 }
 .form-row {
   display: flex;
-  justify-content: flex;
+  justify-content: right;
   padding: .5em;
 }
 .form-row > label {

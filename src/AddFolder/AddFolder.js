@@ -88,14 +88,11 @@ export default class AddFolder extends Component {
           </li>
           <li className='form-row'>
           {/* might have to change the button back to a regular button */}
-          <CircleButton className="form-button"
-            tag={Link}
-            to='/'
+          <button className="form-button"
             type='submit'
             value='submit'
             disabled={this.validateFolderName()}>
-              <FontAwesomeIcon icon='plus' />
-               Folder</CircleButton>
+              Add Folder</button>
           </li>
         </ul>
       </form>
