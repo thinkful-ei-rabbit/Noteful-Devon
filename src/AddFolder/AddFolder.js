@@ -79,15 +79,20 @@ export default class AddFolder extends Component {
       <form className="form" onSubmit={this.handleAddFolder}>
         <ul className='wrapper'>
           <li className='form-row'>
-            <label>Create New Folder:</label>
+            <label htmlFor='addFolder'>Create New Folder:</label>
           </li>
           <li className='form-row'>
-            <input type='text' name='addFolder' required 
+            <input 
+            type='text'
+            id='addFolder' 
+            name='addFolder' 
+            aria-required='true'
+            aria-describedby='addFolderName'
+            aria-label='Create New Folder'
             onChange={e => this.updateNewFolder(e.target.value)}/>
             {this.state.newFolder.touched && <ValidationError message={newFolderError}/>}
           </li>
           <li className='form-row'>
-          {/* might have to change the button back to a regular button */}
           <button className="form-button"
             type='submit'
             value='submit'
