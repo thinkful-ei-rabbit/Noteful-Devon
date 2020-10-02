@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import ApiContext from '../ApiContext'
 import config from '../config'
-import { Link } from 'react-router-dom'
 import ValidationError from '../ValidationError'
-import CircleButton from '../CircleButton/CircleButton'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './AddFolder.css'
 
 
@@ -42,7 +39,7 @@ export default class AddFolder extends Component {
         'content-type': 'application/json'
       },
     }
-    fetch(`${config.API_ENDPOINT}/folders`, options)
+    fetch(`${config.API_ENDPOINT}api/folders`, options)
     .then (res => {
       if(!res.ok) {
         throw new Error ("Something went wrong")

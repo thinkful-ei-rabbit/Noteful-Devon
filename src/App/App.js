@@ -20,8 +20,8 @@ class App extends Component {
 
     componentDidMount() {
         Promise.all([
-            fetch(`${config.API_ENDPOINT}/notes`),
-            fetch(`${config.API_ENDPOINT}/folders`)
+            fetch(`${config.API_ENDPOINT}api/notes`),
+            fetch(`${config.API_ENDPOINT}api/folders`)
         ])
             .then(([notesRes, foldersRes]) => {
                 if (!notesRes.ok)
@@ -68,7 +68,7 @@ class App extends Component {
                         component={NoteListNav}
                     />
                 ))}
-                <Route path="/note/:noteId" component={NotePageNav} />
+                <Route path="/notes/:noteId" component={NotePageNav} />
                 <Route path="/add-folder" component={NotePageNav} />
                 <Route path="/add-note" component={NotePageNav} />
             </>
@@ -86,7 +86,7 @@ class App extends Component {
                         component={NoteListMain}
                     />
                 ))}
-                <Route path="/note/:noteId" component={NotePageMain} />
+                <Route path="/notes/:noteId" component={NotePageMain} />
                 <Route path="/add-folder" component={AddFolder} />
                 <Route path="/add-note" component={AddNote} />
             </>

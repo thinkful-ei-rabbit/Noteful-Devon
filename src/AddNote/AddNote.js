@@ -43,7 +43,7 @@ export default class AddNote extends Component {
         'content-type': 'application/json'
       },
     }
-    fetch(`${config.API_ENDPOINT}/notes`, options)
+    fetch(`${config.API_ENDPOINT}api/notes`, options)
     .then (res => {
       if(!res.ok) {
         throw new Error ("Something went wrong")

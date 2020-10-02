@@ -1,3 +1,6 @@
 export default {
-  API_ENDPOINT: 'https://git.heroku.com/floating-brook-50016.git'
+  API_ENDPOINT: 'http://localhost:8000/',
 }
+
+
+// https://desolate-ocean-36522.herokuapp.com/
